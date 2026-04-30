@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".env" />
+    <File Path=".gitignore" />
+    <File Path="compose.yaml" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/HexaPOS.Application/HexaPOS.Application.csproj" />
+    <Project Path="src/HexaPOS.Domain/HexaPOS.Domain.csproj" />
+    <Project Path="src/HexaPOS.Infraestructure/HexaPOS.Infraestructure.csproj" />
+    <Project Path="src/HexaPOS.Web/HexaPOS.Web.csproj" />
+  </Folder>
+</Solution>

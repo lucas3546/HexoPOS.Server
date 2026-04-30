@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  hexapos.web:
+    build:
+      context: "/home/pcd/RiderProjects/HexoPOS.Server"
+      dockerfile: "src/HexaPOS.Web/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net10.0/HexaPOS.Web.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "hexapos.web:dev"
+    ports: []
+    volumes:
+    - "/home/pcd/RiderProjects/HexoPOS.Server/src/HexaPOS.Web:/app:rw"
+    - "/home/pcd/RiderProjects/HexoPOS.Server:/src:rw"
+    - "/home/pcd/.nuget/packages:/home/app/.nuget/packages"
+    working_dir: "/app"
