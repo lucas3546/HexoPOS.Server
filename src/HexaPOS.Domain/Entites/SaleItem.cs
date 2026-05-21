@@ -1,9 +1,11 @@
 using HexaPOS.Domain.Entites.Base;
+using HexaPOS.Domain.Interfaces;
 
 namespace HexaPOS.Domain.Entites;
 
-public class SaleItem : BaseAuditableEntity<Guid>
+public class SaleItem : ISyncableEntity
 {
+    public Guid Id { get; set; }
     public string SkuSnapshot { get; set; }
     public string ProductNameSnapshot { get; set; }
     public string AttributeSnapshot { get; set; }
@@ -17,4 +19,8 @@ public class SaleItem : BaseAuditableEntity<Guid>
     
     public Guid ProductId { get; set; }
     public Product Product { get; set; }
+
+    public DateTimeOffset UpdatedAt { get; set; }
+
+    public DateTimeOffset? DeletedAt { get; set; }
 }

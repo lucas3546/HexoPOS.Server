@@ -1,0 +1,24 @@
+services:
+  hexapos.web:
+    image: ${DOCKER_REGISTRY-}hexaposweb
+    build:
+      context: .
+      dockerfile: src/HexaPOS.Web/Dockerfile
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-db-volume:/var/lib/postgresql/MAJOR/docker
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+
+volumes:
+  postgres-db-volume:
+    driver: local

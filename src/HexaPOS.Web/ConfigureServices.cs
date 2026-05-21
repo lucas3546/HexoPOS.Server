@@ -1,3 +1,5 @@
+using HexaPOS.Application.Common.Interfaces;
+using HexaPOS.Web.Infraestructure.Services;
 using Microsoft.AspNetCore.HttpLogging;
 
 namespace HexaPOS.Web;
@@ -28,5 +30,7 @@ public static class ConfigureServices
         });
         
         builder.Services.AddHttpContextAccessor();
+
+        builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
     }
 }

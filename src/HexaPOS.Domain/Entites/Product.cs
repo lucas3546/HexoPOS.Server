@@ -1,9 +1,11 @@
 using HexaPOS.Domain.Entites.Base;
+using HexaPOS.Domain.Interfaces;
 
 namespace HexaPOS.Domain.Entites;
 
-public class Product : BaseAuditableEntity<Guid>
+public class Product : ISyncableEntity
 {
+    public Guid Id { get; set; }
     public string Name { get; set; }
     public string Ubication { get; set; }
     public string Sku { get; set; } //Unique
@@ -16,5 +18,9 @@ public class Product : BaseAuditableEntity<Guid>
     //Relationships
     public Guid CategoryId { get; set; }
     public Category Category { get; set; }
-    
+
+
+    public DateTimeOffset UpdatedAt {  get; set; }
+
+    public DateTimeOffset? DeletedAt {  get; set; }
 }
