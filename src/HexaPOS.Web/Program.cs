@@ -31,5 +31,7 @@ app.UseHttpsRedirection();
 app.MapAuthEndpoints();
 app.MapProductsEndpoints();
 app.MapCategoriesEndpoints();
+app.MapSalesEndpoints();
+app.MapSaleItemsEndpoints();
 
 app.Run();
