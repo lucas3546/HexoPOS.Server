@@ -1,10 +1,11 @@
 using HexaPOS.Application.Common.Interfaces;
 using HexaPOS.Domain.Entites;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HexaPOS.Infraestructure.Persistence;
 
-public class ApplicationDbContext : DbContext, IApplicationDbContext
+public class ApplicationDbContext : IdentityDbContext<Account>, IApplicationDbContext
 {
     public ApplicationDbContext() { } 
     

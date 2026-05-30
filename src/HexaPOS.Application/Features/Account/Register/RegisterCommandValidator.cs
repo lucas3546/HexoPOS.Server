@@ -1,16 +1,23 @@
-using FluentValidation;
+﻿using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace HexaPOS.Application.Features.Account.Auth;
+namespace HexaPOS.Application.Features.Account.Register;
 
-public class AuthCommandValidator : AbstractValidator<AuthRequest>
+public class RegisterAccountCommandValidator : AbstractValidator<RegisterAccountRequest>
 {
-    public AuthCommandValidator()
+    public RegisterAccountCommandValidator()
     {
+        RuleFor(v => v.Name)
+            .NotEmpty()
+            .MaximumLength(100);
+
         RuleFor(v => v.Email)
+            .NotEmpty()
             .MaximumLength(200)
-            .EmailAddress()
-            .NotEmpty();
-        
+            .EmailAddress();
+
         RuleFor(v => v.Password).NotEmpty()
             .MinimumLength(8)
             .MaximumLength(16)

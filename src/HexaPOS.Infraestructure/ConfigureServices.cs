@@ -1,7 +1,9 @@
 using HexaPOS.Application.Common.Interfaces;
+using HexaPOS.Domain.Entites;
 using HexaPOS.Infraestructure.Persistence;
 using HexaPOS.Infraestructure.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -29,9 +31,24 @@ public static class ConfigureServices
             provider.GetRequiredService<ApplicationDbContext>()
         );
 
+        builder.Services.AddScoped<ApplicationDbContextSeed>();
+
         builder.Services.AddScoped<ISyncService, SyncService>();
+        builder.Services.AddTransient<IIdentityService, IdentityService>();
+        builder.Services.AddScoped<IJwtService, JwtService>();
+
+        builder.Services.AddIdentity<Account, IdentityRole>(options => {
+            options.User.RequireUniqueEmail = true;
+            options.Password.RequireDigit = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+        })
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
 
     }
+
 
     public static void ApplyMigrations(WebApplication app)
     {

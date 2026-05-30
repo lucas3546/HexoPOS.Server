@@ -1,5 +1,6 @@
 using HexaPOS.Application;
 using HexaPOS.Infraestructure;
+using HexaPOS.Infraestructure.Persistence;
 using HexaPOS.Web;
 using HexaPOS.Web.Endpoints;
 using Scalar.AspNetCore;
@@ -13,7 +14,7 @@ builder.AddWebServices();
 var app = builder.Build();
 
 HexaPOS.Infraestructure.ConfigureServices.ApplyMigrations(app);
-
+await app.InitialiseDatabaseAsync();
 
 if (app.Environment.IsDevelopment())
 {
