@@ -202,10 +202,10 @@ namespace HexaPOS.Infraestructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false),
+                    ImageFileName = table.Column<string>(type: "text", nullable: true),
                     Ubication = table.Column<string>(type: "text", nullable: false),
                     Sku = table.Column<string>(type: "text", nullable: false),
                     Barcode = table.Column<string>(type: "text", nullable: false),
-                    Attribute = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<decimal>(type: "numeric", nullable: false),
                     Stock = table.Column<int>(type: "integer", nullable: false),
                     StockLimit = table.Column<int>(type: "integer", nullable: false),

@@ -32,4 +32,8 @@
       <ProjectReference Include="..\HexaPOS.Infraestructure\HexaPOS.Infraestructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="wwwroot\" />
+    </ItemGroup>
+
 </Project>

@@ -3,9 +3,12 @@ using HexaPOS.Infraestructure;
 using HexaPOS.Infraestructure.Persistence;
 using HexaPOS.Web;
 using HexaPOS.Web.Endpoints;
+using Microsoft.Extensions.FileProviders;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Directory.CreateDirectory("wwwroot/media");
 
 builder.AddInfraestructureServices();
 builder.AddApplicationServices();
@@ -34,5 +37,13 @@ app.MapProductsEndpoints();
 app.MapCategoriesEndpoints();
 app.MapSalesEndpoints();
 app.MapSaleItemsEndpoints();
+app.MapMediaEndpoints();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.WebRootPath, "media")),
+    RequestPath = "/media"
+});
 
 app.Run();

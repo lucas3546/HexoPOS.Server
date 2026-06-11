@@ -31,7 +31,7 @@ public class BulkSyncProductsHandler : IHandler<BulkSyncProductsRequest, Result>
                 entity.Ubication = dto.Ubication;
                 entity.Sku = dto.Sku;
                 entity.Barcode = dto.Barcode;
-                entity.Attribute = dto.Attribute;
+                entity.ImageFileName  = dto.ImageFileName;
                 entity.Price = dto.Price;
                 entity.Stock = dto.Stock;
                 entity.StockLimit = dto.StockLimit;

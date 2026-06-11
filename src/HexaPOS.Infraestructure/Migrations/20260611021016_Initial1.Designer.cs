@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace HexaPOS.Infraestructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260530000543_Initial1")]
+    [Migration("20260611021016_Initial1")]
     partial class Initial1
     {
         /// <inheritdoc />
@@ -131,10 +131,6 @@ namespace HexaPOS.Infraestructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Attribute")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Barcode")
                         .IsRequired()
                         .HasColumnType("text");
@@ -144,6 +140,9 @@ namespace HexaPOS.Infraestructure.Migrations
 
                     b.Property<DateTimeOffset?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ImageFileName")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()

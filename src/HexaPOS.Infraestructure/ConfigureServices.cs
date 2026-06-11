@@ -36,6 +36,7 @@ public static class ConfigureServices
         builder.Services.AddScoped<ISyncService, SyncService>();
         builder.Services.AddTransient<IIdentityService, IdentityService>();
         builder.Services.AddScoped<IJwtService, JwtService>();
+        builder.Services.AddScoped<IFileStorageService, FileStorageService>();
 
         builder.Services.AddIdentity<Account, IdentityRole>(options => {
             options.User.RequireUniqueEmail = true;

@@ -128,10 +128,6 @@ namespace HexaPOS.Infraestructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Attribute")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("Barcode")
                         .IsRequired()
                         .HasColumnType("text");
@@ -141,6 +137,9 @@ namespace HexaPOS.Infraestructure.Migrations
 
                     b.Property<DateTimeOffset?>("DeletedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ImageFileName")
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
                         .IsRequired()
